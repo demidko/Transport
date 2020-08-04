@@ -1,10 +1,5 @@
-enum class Persons(val view: String) {
-    Wolf("🐺"),
-    Goat("🐐"),
-    Cabbage("🥬")
-}
+import Person.*
 
 fun main() {
-
-    Persons.Wolf.view.al(::println)
+  println(placeOf(Goat, Wolf, Cabbage))
 }
