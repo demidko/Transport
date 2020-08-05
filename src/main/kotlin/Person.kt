@@ -15,7 +15,9 @@ object Goat : Person("🐐") {
   override fun reaction(place: Place) = place.without(Cabbage)
 }
 
-private fun Place.without(food: Person) = when (Farmer) {
-  in this -> this
-  else -> this - food
+fun Person.move(from: Place, to: Place): State? {
+  val group = setOf(this, Farmer)
+  val left = from.minus(group).animate()
+  val right = to.plus(group).animate()
+  return State(left, right).takeIf { it.left.size + it.right.size == from.size + to.size }
 }
